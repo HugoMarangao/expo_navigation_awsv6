@@ -1,50 +1,97 @@
-# Welcome to your Expo app 👋
+# Expo + AWS Amplify v6 Integration
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This project is built using the latest version of **Expo SDK (~52)** with **TypeScript**, and integrates **AWS Amplify v6** to handle authentication, API (GraphQL), and cloud services.
 
-## Get started
+## 🔧 Tech Stack
 
-1. Install dependencies
+- **Expo (with TypeScript)**
+- **React Native** (`0.76.7`)
+- **AWS Amplify v6** (`aws-amplify@^6.13.4`)
+- **Expo Router** with **dynamic navigation**
+- **Prebuild workflow (`npx expo prebuild`)** to enable native code access
 
-   ```bash
-   npm install
-   ```
+## 📱 Why Prebuild?
 
-2. Start the app
+We use `npx expo prebuild` to generate native **Android** and **iOS** folders, which gives us access to:
 
-   ```bash
-    npx expo start
-   ```
+- Modify native configurations
+- Install native dependencies not normally compatible with Expo Go
+- Combine the power of **React Native CLI** with the developer experience of **Expo**
 
-In the output, you'll find options to open the app in a
+This hybrid approach lets us take full advantage of both ecosystems.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 🌐 Navigation
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+The app uses `expo-router` for routing and supports **dynamic pagination/navigation** with full type safety and folder-based routes.
 
-## Get a fresh project
+## ☁️ AWS Amplify Integration
 
-When you're ready, run:
+We use:
 
-```bash
-npm run reset-project
+- `aws-amplify` v6
+- `@aws-amplify/react-native` for React Native-specific integrations
+- `@aws-amplify/ui-react-native` for prebuilt UI components (e.g., Authenticator)
+
+All Amplify backend resources (auth, API, storage) are managed using the Amplify CLI and synced to the cloud via the `amplify` folder.
+
+## 📂 Project Structure
+
+Here’s a brief overview of the structure (see full structure in the repo):
+
+```
+├── amplify/               # AWS backend
+├── app/                   # Expo Router pages
+├── components/            # UI components
+├── constants/             # Static constants
+├── hooks/                 # Custom hooks
+├── scripts/               # Utility scripts
+├── src/graphql/           # Auto-generated GraphQL operations
+├── src/models/            # Data models from Amplify
+├── assets/                # Static assets
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 📦 Main Dependencies
 
-## Learn more
+```json
+"aws-amplify": "^6.13.4",
+"@aws-amplify/react-native": "^1.1.7",
+"@aws-amplify/ui-react-native": "^2.4.3",
+"expo": "~52.0.37",
+"expo-router": "~4.0.17",
+"react-native": "0.76.7",
+"@react-navigation/native": "^7.0.14",
+"@react-navigation/bottom-tabs": "^7.2.0",
+"@react-navigation/drawer": "^7.1.2",
+"react-native-webview": "13.12.5",
+"react-native-gesture-handler": "~2.20.2",
+"react-native-reanimated": "~3.16.1"
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## 🚀 Getting Started
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+1. Clone the repo  
+2. Run `npm install`  
+3. Run `npx expo prebuild` to generate native folders  
+4. Run `npx expo run:android` or `npx expo run:ios`
 
-## Join the community
+## 📡 Amplify Setup
 
-Join our community of developers creating universal apps.
+Make sure to install Amplify CLI:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+npm install -g @aws-amplify/cli
+amplify pull --appId YOUR_APP_ID
+```
+
+## ✅ Benefits of This Setup
+
+- Full TypeScript support
+- Dynamic routing with Expo Router
+- Access to native APIs (via prebuild)
+- Seamless Amplify v6 integration
+- Great DX from Expo + full control from React Native
+
+---
+
+Feel free to contribute or raise issues if you find bugs or have suggestions!
+
