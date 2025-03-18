@@ -1,0 +1,14 @@
+{
+  "resourceName": "ProductImage",
+  "policyUUID": "1d6761a6",
+  "bucketName": "expoaws7e78558860b14c829031042871732774",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
